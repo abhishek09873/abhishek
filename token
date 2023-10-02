@@ -1,0 +1,24 @@
+contract MyToken {
+
+    // public variables here
+    string public name = "Abhishek HM";
+    string public symbol = "AHM";
+    uint public totalsupply = 5000;
+    
+    // mapping variable here
+    mapping(address => uint) public balance;
+    
+    // mint function
+    function mint(address _adderin, uint _pvalin) public {
+        totalsupply += _pvalin;
+        balance[_adderin] += _pvalin;
+    }
+    
+    // burn function
+    function burn(address _adderin, uint _pvalin) public {
+        if (balance[_adderin] >= _pvalin) {
+            totalsupply -= _pvalin;
+            balance[_adderin] -= _pvalin;
+        }
+    }
+}
